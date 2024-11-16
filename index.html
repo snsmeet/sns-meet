@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SNS Meet Development</title>
+  </head>
+  <body>
+    <div id="titleContainer">
+      <h2 id="mainTitle">SNS Meet</h2>
+    </div>
+
+    <div class="face">
+      <input id="usernameInput" placeholder="Enter your username" />
+      <button id="webcamButton">Create Meeting</button>
+
+      <!-- Create Meeting ID and Enter Code in a single line -->
+      <div class="inline-container">
+        <button id="callButton" disabled>Create Meeting ID</button>
+        <input id="callInput" placeholder="Enter code" />
+      </div>
+
+      <button id="answerButton" disabled>Join Meeting</button>
+
+      <!-- Added h3 Tag for Send Meeting ID Section -->
+      <h3 class="section-header">Send Meeting ID by Mail</h3>
+      <input id="emailInput" placeholder="Enter candidate email" />
+      <button id="sendEmailButton" disabled>Send Mail</button>
+    </div>
+    <div class="videos">
+      <span>
+        <video id="webcamVideo" autoplay playsinline></video>
+        <div id="localUsername" class="username"></div>
+      </span>
+      <span>
+        <video id="remoteVideo" autoplay playsinline></video>
+        <div id="remoteUsername" class="username"></div>
+      </span>
+    </div>
+
+    <!-- Controls at Bottom Left -->
+    <div class="controls-container">
+      <button id="webcamToggleButton" disabled>Turn Webcam Off</button>
+      <button id="audioToggleButton" disabled>Turn Audio Off</button>
+      <button id="hangupButton" disabled>Leave</button>
+      <div class="dropdown">
+        <button class="dropdown-btn">Tools</button>
+        <div class="dropdown-content">
+          <button id="resumeViewer">Resume Viewer</button>
+          <button id="reportViewer">Report Viewer</button>
+          <div id="resumeOptions" class="hidden">
+            <input type="file" id="fileInput" accept="application/pdf" />
+            <button id="viewFileButton" disabled>View PDF</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Section on Right Side -->
+    <div id="chatContainer" class="chat-box">
+      <h2>Chat</h2>
+      <div id="chatMessages"></div>
+      <input id="chatInput" placeholder="Enter message" />
+      <button id="sendButton" disabled>Send</button>
+    </div>
+
+    <div id="pdfViewerContainer" class="pdf-viewer">
+      <button id="closePdfButton">Close PDF</button>
+      <iframe id="pdfViewer" src="" width="100%" height="600px"></iframe>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

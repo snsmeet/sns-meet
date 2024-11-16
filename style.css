@@ -1,0 +1,477 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: #fffeef;
+  color: #000000;
+}
+
+h2, h3 {
+  text-align: center;
+  margin: 1rem 0;
+  font-weight: bold;
+  color: #000000;
+}
+
+.section-header {
+  margin-top: 2rem;
+  color: #000000;
+  font-size: 1.5rem;
+}
+
+.inline-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.inline-container input {
+  flex: 1;
+}
+
+.videos {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.videos span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+video {
+  width: 500px;
+  height: 350px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(34, 34, 34, 0.2);
+  background: rgb(36, 35, 35);
+}
+
+button {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.8rem 1.2rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #254ed3;
+  color: #ffffff;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:disabled {
+  background: #254ed3;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background: #1e8bbd;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+input {
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  background: #e0e0e0;
+  color: #000000;
+  outline: none;
+}
+
+input:focus {
+  border-color: #f7f7f7;
+}
+
+.username {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000000;
+  margin-top: 0.5rem;
+  font-family: 'Syne Mono', monospace;
+}
+
+/* Chat Box on Right Side */
+#chatContainer {
+  position: static;
+  width: 1025px;
+  height: 400px;
+  background-color: #00000041;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  padding: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 1rem;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+#chatMessages {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+#chatInput {
+  width: calc(100% - 10px);
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+#sendButton {
+  width: 80px;
+  display: flex;
+  align-items: center;
+}
+
+/* Controls at Bottom Left */
+.controls-container {
+  position: static;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-btn {
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background: #256ad3;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dropdown-btn:hover {
+  background: #1eaabd;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fafafa;
+  min-width: 150px;
+  border-radius: 5px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 10px;
+}
+
+.dropdown-content button {
+  display: block;
+  background: none;
+  color: #000000;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  width: 100%;
+  text-align: left;
+}
+
+.dropdown-content button:hover {
+  color: #25d3d3;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.pdf-viewer {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 10;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+#pdfViewer {
+  width: 100%;
+  height: 90%;
+  border: none;
+}
+
+#closePdfButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-weight: bold;
+  background: #256ad3;
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#webcamVideo {
+  transform: scaleX(-1);
+}
+
+#hangupButton {
+  background: #ff4d4d;
+  color: #ffffff;
+}
+
+#hangupButton:hover:not(:disabled) {
+  background: #ff3333;
+}
+/* 
+#titleContainer {
+  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
+  border-bottom: 4px solid #000000;
+  padding: 1.5rem;
+  display: block;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  background-color: #f4e514;
+  width: 100%;
+  box-sizing: border-box;
+} */
+
+#titleContainer {
+  border: 2px solid #FDD835; /* Subtle yellow border for light theme */
+  padding: 1.2rem;
+  display: block;
+
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  background: #FFF9C4; /* Soft light yellow background */
+  width: 100%;
+  box-sizing: border-box;
+
+  border-radius: 16px; /* Rounded corners for a smooth look */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15), 
+              0 1px 3px rgba(0, 0, 0, 0.1), 
+              0 10px 20px rgba(0, 0, 0, 0.3); /* Added black outer shadow for emphasis */
+  
+  font-family: 'Poppins', sans-serif; /* Clean and modern font */
+  color: #6D4C41; /* Warm brown for text to complement yellow */
+  font-size: 1.8rem; /* Optimized font size */
+  font-weight: 600; /* Semi-bold for emphasis */
+  letter-spacing: 0.5px; /* Subtle spacing for elegance */
+  
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover animation */
+}
+
+#titleContainer:hover {
+  transform: scale(1.02); /* Gentle scaling effect */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3), 
+              0 3px 6px rgba(0, 0, 0, 0.2), 
+              0 15px 30px rgba(0, 0, 0, 0.5); /* Enhanced black shadow for hover */
+}
+
+#mainTitle {
+  font-size: 3rem;
+  color: #000000;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Face Container */
+.face {
+  background: linear-gradient(145deg, #ffffff, #f5f5f5);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* Enhanced shadow for more depth */
+  padding: 2rem 3rem; /* Increased horizontal padding */
+  width: 100%;
+  max-width: 600px; /* Increased max-width for a more horizontal look */
+  text-align: center;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: fadeIn 1s ease-in-out;
+  position: relative; /* For better control over position */
+  overflow: hidden; /* To ensure no elements overflow */
+}
+
+/* Section Header Styling */
+.face h3.section-header {
+  font-size: 1.2rem;
+  color: #444;
+  margin-top: 1rem;
+  font-weight: 600;
+  text-align: left;
+  padding-left: 15px;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+}
+
+/* Input Field Styling */
+.face input {
+  width: 100%;
+  padding: 1rem 1.2rem; /* Increased padding for better spacing */
+  font-size: 1.1rem;
+  font-family: 'Poppins', sans-serif;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f8f8f8;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.face input::placeholder {
+  color: #bbb;
+}
+
+.face input:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 10px rgba(74, 144, 226, 0.2);
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+/* Button Styling */
+.face button {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #254ed3, #1e8bbd);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.face button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.face button:not(:disabled):hover {
+  background: #1a74b7;
+}
+
+.face button:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+.face button:not(:disabled):hover:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: ripple 0.6s linear;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes ripple {
+  100% {
+    width: 0;
+    height: 0;
+  }
+}
+
+/* Inline Container Styling (For buttons and input together) */
+.inline-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.inline-container button {
+  flex: 1;
+  padding: 0.7rem;
+}
+
+.inline-container input {
+  flex: 2;
+  padding: 0.7rem;
+}
+
+/* Animation for Fade-in Effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .face {
+    padding: 1.3rem;
+    gap: 1.3rem;
+  }
+
+  .inline-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .face input {
+    padding: 0.9rem;
+  }
+
+  .face button {
+    padding: 0.9rem;
+  }
+}
+
+#answerButton{
+  background-color: darkgreen;
+}
